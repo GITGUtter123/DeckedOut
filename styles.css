@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  text-align: center;
+}
+
+.app-container {
+  width: 90%;
+  max-width: 400px;
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 250px;
+  perspective: 1000px;
+}
+
+.flashcard {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out, opacity 0.4s ease-in-out;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.left {
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0.1;
+  transform: translateX(-180px) rotateZ(-10deg) scale(0.9);
+}
+
+.main {
+  background-color: #1E88E5;
+  z-index: 10;
+}
+
+.right {
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 0.1;
+  transform: translateX(180px) rotateZ(10deg) scale(0.9);
+}
+
+.card-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  backface-visibility: hidden;
+}
+
+.front {
+  background-color: #1E88E5;
+}
+
+.back {
+  background-color: #E53935;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.main.flipped {
+  transform: rotateY(180deg);
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #BB86FC;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #3700B3;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #555;
+  background: #222;
+  color: white;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #888;
+}
+
+button.clear-btn {
+  background-color: #FF5252;
+  margin-top: 10px;
+  animation-name: spin;
+  animation-duration: 2.5s;
+  animation-timing-function: ease;
+  animation-delay: 0.2s;
+}
+
+button.clear-btn:hover {
+  background-color: #D32F2F;
+}
+
+.delete-btn {
+  background-color: #FF5252;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #D32F2F;
+}
+
+.presets-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  background-color: #333;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.dropdown-btn {
+  background-color: #BB86FC;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.dropdown-btn:hover {
+  background-color: #3700B3;
+}
+
+.preset-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  padding: 10px;
+  z-index: 10;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.preset-dropdown-content button,
+.preset-dropdown-content ul {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.preset-dropdown-content ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.preset-dropdown-content ul li {
+  padding: 5px;
+  background-color: #1E88E5;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.preset-dropdown-content ul li:hover {
+  background-color: #3700B3;
+}
+
+.delete-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+@keyframes spin{
+  0%{
+
+  }
+
+  50%{
+    scale: 1.3;
+    transform: rotate(0);
+    border-radius: 0;
+  }
+
+  100%{
+    transform: rotate(360deg);
+    border-radius: 50%;
+    scale: 1.3;
+  }
+}
